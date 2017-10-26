@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> 
+    <title>...</title>
+    <style type="text/css">
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        font-family: sans-serif;
+        font-size: 12pt;
+      }
+      
+      .wrapper {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .view {
+        height: 100%;
+        width: 100%;
+        flex-grow: 0;
+        flex-shrink: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      
+      #firstPage {
+        background: -moz-linear-gradient(bottom right, white, grey);
+      }
+      
+      #secondPage {
+        background: -moz-linear-gradient(bottom right, grey, white);
+      }
+      
+      #thirdPage {
+        background: -moz-linear-gradient(bottom right, white, grey);
+      }
+      
+      img {
+        max-width: 20%;
+        max-height: auto;
+      }
+      
+      .vl {
+        border-left: 3px solid black;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 0;
+      }
+      
+      input[type=text],
+      select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 0 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      
+      #tv {
+        position: fixed;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: 100;
+        opacity: 0;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .text {
+          width: 40%;
+          margin: 5%;          
+      }
+
+      .title{
+        font-family: 'Lobster', cursive;
+        font-size: 1000%;
+         color: black;
+        text-shadow:
+         3px 3px 0 #fff,
+         -1px -1px 0 #fff,  
+         1px -1px 0 #fff,
+         -1px 1px 0 #fff,
+         1px 1px 0 #fff;
+        position: absolute;
+        margin-bottom: 10%;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <video autoplay loop muted id="tv">
+        <source src="noise.mp4" type="video/mp4">
+      </video>
+      <div id="firstPage" class="view">
+          <div class="title">Lorem Ipsum</div>
+        <img src="https://i.stack.imgur.com/G643a.png">
+        <div class="vl"></div>
+        <button id="next" class="w3-button w3-xlarge w3-circle w3-black">+</button>
+      </div>
+      <div id="secondPage" class="view">
+        <div class="text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque accumsan magna sit amet cursus pellentesque. Sed iaculis risus et eros ultrices molestie. Phasellus nec orci in nisl rhoncus imperdiet. Integer quis quam augue. Integer posuere interdum
+          vulputate. Nulla dapibus turpis sed tortor placerat iaculis. Vivamus non convallis mi. </div>
+        <div>
+          <form action="/action_page.php">
+            <label for="fname"></label>
+            <input type="text" id="fname" name="firstname" placeholder="Write something here...">
+          </form>
+        </div>
+        <div class="vl"></div>
+        <button id="nextTwo" class="w3-button w3-xlarge w3-circle w3-black">+</button>
+      </div>
+      <div id="thirdPage" class="view"></div>
+    </div>
+    <script type="text/javascript">
+      var firstPage = document.getElementById('firstPage');
+      var secondPage = document.getElementById('secondPage');
+      var nextBtn = document.getElementById('next');
+      var nextTwoBtn = document.getElementById('nextTwo');
+      var backBtn = document.getElementById('back');
+
+      nextBtn.addEventListener('click', next);
+      nextTwoBtn.addEventListener('click', nextTwo);
+
+      function next() {
+        // Affiche la video
+        var video = document.getElementById('tv');
+        video.style.opacity = 1;
+        video.muted = false;
+        setTimeout(function() {
+          // Cache la video à la fin du timeout
+          video.style.opacity = 0;
+          video.muted = true;
+        }, 500); // Execute la fonction dans 500ms
+        firstPage.style.marginTop = '-100%';
+      }
+
+      function nextTwo() {
+        secondPage.style.marginTop = '-100%';
+      }
+
+    </script>
+
+  </body>
+
+</html>
